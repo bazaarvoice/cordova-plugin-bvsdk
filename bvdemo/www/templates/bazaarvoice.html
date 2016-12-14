@@ -1,0 +1,68 @@
+<script src="lib/ionic-rating/ionic-rating.min.js"></script>
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<style>
+        ion-content {
+            background: #f7f7f7;
+        }
+        ul.rating li {
+            display: inline;
+            border: 0px;
+            background: none;
+            padding: 5px 2px;
+
+        }
+        ul.rating li i {
+            font-size: 24px;
+            color: #d6c80e;
+        }
+        ul.rating {
+            text-align: left;
+        }
+
+        strong {
+            font-size: 16px;
+        }
+#overlay {
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width:100%;
+    height:100%;
+    text-align:center;
+    z-index: 1000;
+}
+#overlay div {
+    width:300px;
+    margin: 100px auto;
+    background-color: #fff;
+    border:1px solid #000;
+    padding:15px;
+    text-align:center;
+}
+
+
+</style>
+<div id="overlay">
+    <div>
+        <p>Content you want the user to see goes here.</p>
+    </div>
+</div>
+<ion-view title="Recommendations" align-title="center" id="bazaarvoice">
+    
+    <ion-content padding="true" class="has-header">
+        <div><p>something</p><div>
+        <div class="list card" ng-repeat="name in names track by $index">
+            
+            <div class="item item-image" style="height:200px">
+                <img src="{{images[$index]}}" alt="Image not found."  style=" max-height:100%; width:auto;">
+            </div>
+            <div class="item" id="products">
+                <h2><strong>{{names[$index]}}</strong></h2>
+                <h3>Number of Reviews: {{num_reviews[$index]}} </h3>
+                <rating ng-model="averageRatings[$index]" max="rating.max"></rating>
+            </div>
+        </div>
+        
+    </ion-content>
+</ion-view>

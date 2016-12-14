@@ -1,0 +1,38 @@
+matrix:
+  include:
+  - language: android
+    env: TO_TEST=ANDROID
+    jdk: oraclejdk8
+  - os: osx
+    osx_image: xcode8
+    env: TO_TEST=IOS
+  fast_finish: true
+android:
+  components:
+  - platform-tools
+  - tools
+  - android-23
+  - build-tools-23.0.3
+  - extra-android-m2repository
+  - extra-google-m2repository
+  - sys-img-armeabi-v7a-android-19
+install:
+- rvm install 2.2.0
+- sudo pip install boto3
+- if [ "$TO_TEST" = "ANDROID" ]; then gem install calabash-android; fi
+- if [ "$TO_TEST" = "IOS" ]; then gem install calabash-cucumber; fi
+before_script:
+- if [ "$TO_TEST" = "ANDROID" ]; then chmod 755 createEmulator.sh; fi
+- if [ "$TO_TEST" = "ANDROID" ]; then ./createEmulator.sh; fi
+script:
+- if [ "$TO_TEST" = "ANDROID" ]; then chmod 755 androidTest.sh; fi
+- if [ "$TO_TEST" = "ANDROID" ]; then ./androidTest.sh; fi
+- if [ "$TO_TEST" = "IOS" ]; then chmod 755 iosTest.sh; fi
+- if [ "$TO_TEST" = "IOS" ]; then ./iosTest.sh; fi
+notifications:
+  email:
+  - mobilecoreteam@bazaarvoice.com
+env:
+  global:
+  - secure: oSvRy1F0XpjrBdHdOcY7SNSah4dOToNvpl19PYwrdFWXURHhTrnTW0mic2vn9m6pOPjL7+V9Xqo8g/b5V/pJWJJMYEY/iKtekwThU7q5Lj/dTBjCf4k47fDLeSOUEIUR9TZDVjGZAIU98ooahj0THshXIhRDBQxuYgcZB1ndPzc510YZeeUc4gCca2iyTAFjBzEm0tJiw4/S+/WClgl5gqxTouxPQswr8PMHaSkJLCKc/48/TIZPpc5AtgBqsSQ5m0Hu04ssHy/WQK80p8SDg0YRlvkwue9KTC1GQ/XOmUJh/ViDt0Meyc8Gp/EkZJ8KOhSD8VKSrE3lwxwtUtuE+YNtSkM6f8IoFUw/K6ZgkBDEgE+sfppvX9HpktRytQ2O8xdih05LJCn4X1fwt4TwGEIjgPxaPrGt086GC9ILK1yPSoMN/8bYvSLTSE1E36X2sOQ0j/cMDR8GkUrNQWeH8yhf7iutHuG+A01o9SY718IcxjRnqIpt0FV1FNGApQ4bKyREJQ3r6C2B95jcRsOpIaElmEUTgI1KyZL6VK7sjJxMsvpi5a7f/Mkaip5GGdnTjVmFKXjSkNErVljn4+YQ8lUs/bxGPUfAM4awIqO725H5BLEbNKlfwOnHV+6LC59EUibVdy2wj2aVtbd7Onq1fWDB5B/RRapOiEw+EnTQRKs=
+  - secure: PgA6IpPqf8PBEsrUT4DC98ovk/I/G6oaauMHVHvPxo6gIHkW1SnMg8klxC+0RnvQ97yfFiWPVemKprzjbJrGckQR1K6cAh5H96rjWJICcIIW8EJBMC4QtvhXNe/+8JFt/B50rk6360QFny2nnqQG/0WwLskCQ4iVWnoLerCSluPhTZyfaDEh6ssOpkRLYj40mJRdDWe3rjF01zgeNcNdUNaCc8YIle2kTRAEbRgnrvjgy0XXfKvzckR5tabN6c6onT9rFLtOQ7ceZF4tNnB7J/HX0vw9bBD0lYQs2MzDmpP2teUDmvr+94s0qp3Ko8XZXTiGx5cUrtH8zuOuMt4BL6ENCjDwKDlMuDN4Rl65hHY+UDbnzX3p8J6+/873M1KPTIqzpATKoOsGZs/712fXS6/kj395KOxToJkeaH3bQESdH6hMsYgmfOjh21gBKQTEJfN+1sxQo+XKJRxBhdBEd3fYQYfOjkkQAo6fjI5GflKs7CtohusfcItlwZtCWJVehaLk+ktrvVCWaoIOgo/npuOZV3wa7U9+T/ZWoDBk3HFvKCJwFGYWWAdKzVZdG4QRO7rYnlMelKoSc+0BxUhN/MdrdgaTnhxeukSGB2eDKMTEoKFGN/KDeVJ5vlrbUYqQEc4AJvl010uDJ0PBJ9uqf5ZF2ygVi+HYMlthBungB7E=

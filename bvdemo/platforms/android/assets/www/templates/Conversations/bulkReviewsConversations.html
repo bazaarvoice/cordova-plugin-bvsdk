@@ -1,0 +1,32 @@
+<script src="lib/ionic-rating/ionic-rating.min.js"></script>
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<style>
+ul.rating li {
+    display: inline;
+    border: 0px;
+    background: none;
+    padding: 5px 2px;
+
+}
+ul.rating li i {
+    font-size: 24px;
+    color: #d6c80e;
+}
+ul.rating {
+    text-align: left;
+
+}
+
+</style>
+<ion-view title="Conversations" id="bulkReviewsConversations">
+    <ion-content padding="true" >
+        <div><p>{{failMessage}}</p></div>
+        <div class="list card" ng-repeat="productIDs in productID track by $index">
+            <div class="item ">
+                <h2><strong>Product ID: {{productID[$index]}}</strong></h2>
+                <rating ng-model="averageOverallRatings[$index]" max="rating.max"></rating>
+                <p>Total Number of Reviews: {{totalReviewCount[$index]}}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

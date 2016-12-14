@@ -1,0 +1,123 @@
+<script src="lib/ionic-rating/ionic-rating.min.js"></script>
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<style>
+        ion-content {
+            background: #f7f7f7;
+        }
+
+        strong {
+            font-size: 16px;
+        }
+        h3 i {
+            padding-right: 15px;
+            font-size: 20px;
+            opacity: 0.5;
+        }
+        ul.rating li {
+            display: inline;
+            border: 0px;
+            background: none;
+            padding: 5px 2px;
+            
+        }
+        ul.rating li i {
+            font-size: 24px;
+            color: #d6c80e;
+        }
+        ul.rating {
+            text-align: left;
+            
+        }
+
+
+        #widget {
+            background-color: #fffbf1;
+        }
+        #recommended{
+            color: #003c4c;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 2px solid #00ab8e;
+            margin: 1em 0;
+            padding: 0;
+        }
+        .numberCircle {
+            border-radius: 50%;
+            behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+            
+            width: 150px;
+            height: 150px;
+            padding: 20px;
+            margin: auto;
+            background: transparent;
+            border: 2px solid #00ab8e;
+            text-align: center;
+
+        }
+</style>
+<ion-view title="Conversations" align-title="center" id="productStatsConversations">
+    <ion-content class="has-footer">
+        <div><p>{{failMessage}}</p></div>
+        <div class="list card">
+            <div class="item item-image" style="height:200px">
+                <img src="{{image}}" alt="Image not found."  style=" max-height:100%; width:auto;">
+            </div>
+
+            <div class="item" id="widget">
+                <div id="products">
+                    <h2><strong>{{name}}</strong></h2>
+                </div>
+                <hr>
+                <div style="display: flex">
+                    <div style="text-align: center; vertical-align: top; padding-top: 10px; width:45%">
+                        <h2 id="recommended">{{averageOverallRating}}</h2>
+                        <h4> OUT OF 5 </h4>
+                        <rating style="text-align: center;" ng-model="averageOverallRating" max="rating.max"></rating>
+                    </div>
+                    <div style="width: 55%; vertical-align: top;" >
+                        <canvas id="base" class="chart-horizontal-bar"
+                            chart-data="data" chart-labels="labels" chart-options="options" chart-colors="colors">
+                        </canvas>
+                    </div>
+                </div>
+                
+                <!--                 <div style="padding-top: 20px;">
+                 <div class="numberCircle" >
+                 <h2 id="recommended">{{percentRecommended}}%</h2>
+                 <h4><b> OF CUSTOMERS</b></h4>
+                 <h4> <b>RECOMMEND THIS PRODUCT</b> </h4>
+                 </div>
+                 </div> -->
+                <div style="padding-top: 20px;">
+                    <div style="display: inline-block; width:45%; text-align: right; vertical-align: top; padding-right: 5px;" >
+                        <h2 id="recommended">{{percentRecommended}}%</h2>
+                        <h4><b> OF CUSTOMERS</b></h4>
+                    </div>
+                    <div style="display: inline-block; width:45%; border-left: thin solid #00ab8e; padding-left: 10px;">
+                        <h4> <b>RECOMMEND THIS PRODUCT</b> </h4>
+                        <h4> <b>{{recommendedCount}}</b> of <b>{{totalReviewCount}}</b> REVIEWS</h4>
+                    </div>
+                    
+                </div>
+                <hr>
+                <div style="padding-top: 20px;">
+                    <div style="display: inline-block; width: 45%; text-align: center; border: thin solid #00ab8e; padding: 10px;" >
+                        <h2 id="recommended">{{totalQuestionCount}}</h2>
+                        <h4><b> QUESTIONS </b></h4>
+                    </div>
+                    <div style="display: inline-block; width: 45%; float: right; text-align: center; border: thin solid #00ab8e; padding: 10px;">
+                        <h2 id="recommended">{{totalAnswerCount}}</h2>
+                        <h4><b> ANSWERS </b></h4>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </ion-content>
+</ion-view>

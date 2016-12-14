@@ -1,0 +1,37 @@
+<script src="lib/ionic-rating/ionic-rating.min.js"></script>
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<style>
+    ul.rating li {
+        display: inline;
+        border: 0px;
+        background: none;
+        padding: 5px 2px;
+        
+    }
+ul.rating li i {
+    font-size: 24px;
+    color: #d6c80e;
+}
+ul.rating {
+    text-align: left;    
+}
+    
+</style>
+<ion-view title="Conversations" id="reviewsConversations">
+
+<ion-content padding="true">
+    <div class="list card" ng-repeat="title in titles track by $index">
+        <div class="item ">
+            <h2 style="padding-bottom: -10px;"><strong>{{titles[$index]}}</strong></h2>
+            <rating ng-model="userRating[$index]" max="rating.max"></rating>
+            <h3>By {{users[$index]}} on {{dates[$index]}}</h3>
+            <p>{{reviewText[$index]}}</p>
+        </div>
+    </div>
+    <ion-infinite-scroll
+        on-infinite="loadMore()"
+        distance="25%">
+    </ion-infinite-scroll>
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,10 @@
+{
+
+"clientId": "cordova-testing",
+"recommendationsApiKey": "",
+"conversationsApiKey": "2cpdrhohmgmwfz8vqyo48f52g",
+"isStaging": "true",
+"testProductID":"test1",
+"testProductIDArray":["test1", "test2", "test3"]
+
+}

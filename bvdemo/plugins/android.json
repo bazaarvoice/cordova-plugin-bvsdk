@@ -1,0 +1,34 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        }
+    },
+    "dependent_plugins": {
+        "com.example.bvinterface": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.example.bvinterfaceapp"
+        }
+    }
+}

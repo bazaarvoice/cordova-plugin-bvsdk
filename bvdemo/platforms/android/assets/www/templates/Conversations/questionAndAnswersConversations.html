@@ -1,0 +1,31 @@
+<script src="lib/ionic-rating/ionic-rating.min.js"></script>
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<style>
+    strong {
+        font-size: 16px;
+    }
+</style>
+<ion-view title="Conversations" id="questionAndAnswersConversations">
+    <div ui-view="conversations-page-Q&A"></div>
+    <ion-content padding="true" >
+        <div><p>{{failMessage}}</p></div>
+        <div class="list card" ng-repeat="questionSummary in questionSummaries track by $index">
+            <div class="item" style="background-color: #fffbf1" ng-click="toggleGroup(questionSummary)"
+                 ng-class="{active: isGroupShown(questionSummary)}">
+                <h2><strong>{{questionSummaries[$index]}}</strong></h2>
+                <h3>By {{users[$index]}} on {{dates[$index]}}</h3>
+                <p>{{questionDetails[$index]}}</p>
+                <i class="icon" ng-class="isGroupShown(questionSummary) ? 'ion-minus' : 'ion-plus'"> Read {{totalAnswers[$index]}} Answers</i>
+                &nbsp;
+            </div>
+            <div class="item item-accordian" ng-repeat="text in answerTexts[$index].texts" ng-show="isGroupShown(questionSummary)">
+            <p>{{text}}</p>
+            </div>
+        </div>
+        <ion-infinite-scroll
+                on-infinite="loadMore()"
+                distance="25%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>
+

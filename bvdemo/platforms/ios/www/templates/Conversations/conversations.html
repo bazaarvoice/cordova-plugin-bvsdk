@@ -1,0 +1,26 @@
+<script src="lib/ionic-rating/ionic-rating.min.js"></script>
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<link href="slidingTabs.css" rel="stylesheet">
+
+<ion-view view-title="Conversations">
+        <ion-content scroll="false">
+            <ion-slide-box slide-tabs-scrollable="true"  show-pager="false" ion-slide-tabs>
+                <ion-slide ion-slide-tab-label="Product Page"><div ng-include src="'templates/Conversations/productStatsConversations'"></div><ion-nav-view name="conversations-page"></ion-nav-view></ion-slide>
+                <ion-slide ion-slide-tab-label="Reviews">
+                    <div ng-controller="reviewsConversationsCtrl">
+                        <div ng-include src="'templates/Conversations/reviewsConversations.html'"></div>
+                    </div>
+                </ion-slide>
+                <ion-slide ion-slide-tab-label="Q&A">
+                    <div ng-controller="questionAndAnswersConversationsCtrl">
+                        <div ng-include src="'templates/Conversations/questionAndAnswersConversations.html'"></div>
+                    </div>
+                </ion-slide>
+                <ion-slide ion-slide-tab-label="Bulk Ratings">
+                    <div ng-controller="bulkReviewsConversationsCtrl">
+                        <div ng-include src="'templates/Conversations/bulkReviewsConversations.html'"></div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+</ion-view>
