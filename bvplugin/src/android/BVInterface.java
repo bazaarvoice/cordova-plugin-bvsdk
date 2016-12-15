@@ -81,7 +81,7 @@ public class BVInterface extends CordovaPlugin {
             callbackContext.success("BVSDK has been built successfully.");
             return true;
 
-        } else if (action.equals("getRecommendation")) {
+        } else if (action.equals("getRecommendations")) {
 
             BVRecommendations recs = new BVRecommendations();
             int limit = data.getInt(0);
@@ -102,7 +102,7 @@ public class BVInterface extends CordovaPlugin {
 
             return true;
 
-        } else if (action.equals("getConversations")){
+        } else if (action.equals("getQuestionsAndAnswersConversations")){
             String productId = data.getString(0);
             int limit = data.getInt(1);
             int offset = data.getInt(2);
@@ -231,8 +231,8 @@ public class BVInterface extends CordovaPlugin {
                     productStats.add(Integer.toString(b));
                     productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getOneStarCount().toString());
                     productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getTwoStarCount().toString());
-                    productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getThreeStarCount0().toString());
-                    productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getFourStarCount0().toString());
+                    productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getThreeStarCount().toString());
+                    productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getFourStarCount().toString());
                     productStats.add(reviewStatistics.getReviewStatistics().getRatingDistribution().getFiveStarCount().toString());
 
                 }
