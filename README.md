@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE)
-[![Build Status](https://travis-ci.com/bazaarvoice/cordova-plugin-bvsdk.svg?token=HjZzZooBqafqGuyqBXHY&branch=master)](https://travis-ci.com/bazaarvoice/cordova-plugin-bvsdk)
+[![Build Status](https://travis-ci.org/bazaarvoice/cordova-plugin-bvsdk.svg?branch=master)](https://travis-ci.org/bazaarvoice/cordova-plugin-bvsdk)
 
 ![](./misc/logo-tagline.png)
 
